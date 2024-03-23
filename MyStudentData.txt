@@ -1,0 +1,169 @@
+File Source:U.S. DEPARTMENT OF EDUCATION, NATIONAL STUDENT LOAN DATA SYSTEM (NSLDS)
+File Request Date:2024-03-17 17:00:31
+Student First Name:SUMAYA
+Student Middle Initial:L
+Student Last Name:YUSUF
+Student Street Address 1:7085 HOLLY PARK DR S
+Student Street Address 2:
+Student City:SEATTLE
+Student State Code:WA
+Student Country Code:US
+Student Zip Code:98118
+Student Email Address:NASROHIREY245@GMAIL.COM
+Student Home Phone Country Code:
+Student Home Phone Number:2068416384
+Student Home Phone Preferred:
+Student Cell Phone Country Code:1
+Student Cell Phone Number:2064681931
+Student Cell Phone Preferred:Yes
+Student Work Phone Country Code:
+Student Work Phone Number:
+Student Work Phone Preferred:
+Student SULA Maximum Eligibility Period:0
+Student SULA Subsidized Usage Period:0
+Student SULA Remaining Eligibility Period:0
+Student Enrollment Status Code:N
+Student Enrollment Status Code Description:FULL TIME
+Student Enrollment Status Effective Date:09/27/2023
+Undergraduate Subsidized Loan Limit Flag:
+Undergraduate Combined Loan Limit Flag:
+Undergraduate Award Year:
+Undergraduate Dependency Indicator:
+Undergraduate Aggregate Subsidized Total:
+Undergraduate Aggregate Unsubsidized Total:
+Undergraduate Aggregate Combined Total:
+Graduate Subsidized Loan Limit Flag:
+Graduate Combined Loan Limit Flag:
+Graduate Award Year:
+Graduate Dependency Indicator:
+Graduate Aggregate Subsidized Total:
+Graduate Aggregate Unsubsidized Total:
+Graduate Aggregate Combined Total:
+Aggregate Subsidized Total (Undergraduate and Graduate):
+Aggregate Unsubsidized Total (Undergraduate and Graduate):
+Aggregate Combined Total (Undergraduate and Graduate):
+Student Total All Loans Outstanding Principal:$0.00
+Student Total All Loans Outstanding Interest:$0.00
+Student Pell Lifetime Eligibility Used:283.321%
+Student Iraq and Afghanistan Service Lifetime Eligibility Used:0.000%
+Student Total All Grants:
+Grant Type Code:PE
+Grant Type Code Description:FEDERAL PELL GRANT
+Grant Attending School Name:University of Washington - Seattle
+Grant Attending School OPEID:00379800
+Grant Award Year:2023 - 2024
+Grant Scheduled Amount:$7,345.00
+Grant Award Amount:$8,568.00
+Grant Disbursed Amount:$6,120.00
+Grant First Time:No
+Grant Additional Eligibility:Yes
+Award ID:
+Conversion Date:
+Children Of Fallen Heroes Indicator:No
+Aid Recipient's Percent Eligibility Used (EU):83.322%
+Aid Recipient's Total Percent Eligibility Used (TEU):83.322%
+Grant Contact Type:Attending School
+Grant Contact Code:00379800
+Grant Contact Name:University of Washington - Seattle
+Grant Contact Street Address 1:University of Washington
+Grant Contact Street Address 2:Box 355880
+Grant Contact City:Seattle
+Grant Contact State Code:WA
+Grant Contact Zip Code:98195(5880)
+Phone Number:206-543-6101
+Phone Extension:
+Email Address:hzilz@uw.edu
+Web Site Address:https://www.washington.edu/financialaid/
+Grant Type Code:PE
+Grant Type Code Description:FEDERAL PELL GRANT
+Grant Attending School Name:University of Washington - Seattle
+Grant Attending School OPEID:00379800
+Grant Award Year:2022 - 2023
+Grant Scheduled Amount:$6,895.00
+Grant Award Amount:$6,895.00
+Grant Disbursed Amount:$6,895.00
+Grant First Time:No
+Grant Additional Eligibility:No
+Award ID:
+Conversion Date:
+Children Of Fallen Heroes Indicator:No
+Aid Recipient's Percent Eligibility Used (EU):100.000%
+Aid Recipient's Total Percent Eligibility Used (TEU):100.000%
+Grant Contact Type:Attending School
+Grant Contact Code:00379800
+Grant Contact Name:University of Washington - Seattle
+Grant Contact Street Address 1:University of Washington
+Grant Contact Street Address 2:Box 355880
+Grant Contact City:Seattle
+Grant Contact State Code:WA
+Grant Contact Zip Code:98195(5880)
+Phone Number:206-543-6101
+Phone Extension:
+Email Address:hzilz@uw.edu
+Web Site Address:https://www.washington.edu/financialaid/
+Grant Type Code:PE
+Grant Type Code Description:FEDERAL PELL GRANT
+Grant Attending School Name:University of Washington - Seattle
+Grant Attending School OPEID:00379800
+Grant Award Year:2021 - 2022
+Grant Scheduled Amount:$4,145.00
+Grant Award Amount:$4,145.00
+Grant Disbursed Amount:$4,145.00
+Grant First Time:No
+Grant Additional Eligibility:No
+Award ID:
+Conversion Date:
+Children Of Fallen Heroes Indicator:No
+Aid Recipient's Percent Eligibility Used (EU):100.000%
+Aid Recipient's Total Percent Eligibility Used (TEU):100.000%
+Grant Contact Type:Attending School
+Grant Contact Code:00379800
+Grant Contact Name:University of Washington - Seattle
+Grant Contact Street Address 1:University of Washington
+Grant Contact Street Address 2:Box 355880
+Grant Contact City:Seattle
+Grant Contact State Code:WA
+Grant Contact Zip Code:98195(5880)
+Phone Number:206-543-6101
+Phone Extension:
+Email Address:hzilz@uw.edu
+Web Site Address:https://www.washington.edu/financialaid/
+Program School Name:University of Washington - Seattle
+Program School OPEID:00379800
+Program Cip Year:2020
+Program Cip Code:110101
+Program CIP Title:Computer and Information Sciences, General.
+Program Credential Level Code:03
+Program Credential Level Code Description:BACHELOR?S DEGREE
+Program Begin Date:09/27/2023
+Program Published Length in Years:4.0
+Special Program Indicator Code:B
+Special Program Indicator Description:BACHELOR?S DEGREE COMPLETION PROGRAM
+Program Status Code:F
+Program Status Code Description:FULL TIME
+Program Status Effective Date:09/27/2023
+Program School Name:University of Washington - Seattle
+Program School OPEID:00379800
+Program Cip Year:2020
+Program Cip Code:309999
+Program CIP Title:Multi-/Interdisciplinary Studies, Other.
+Program Credential Level Code:99
+Program Credential Level Code Description:NON-CREDENTIAL PROGRAM (PREP. COURSEWORK / TEACHER CERT.)
+Program Begin Date:09/29/2021
+Program Published Length in Years:4.0
+Special Program Indicator Code:U
+Special Program Indicator Description:PREPARATORY COURSEWORK UNDERGRADUATE PROGRAM
+Program Status Code:W
+Program Status Code Description:WITHDRAWN
+Program Status Effective Date:08/18/2023
+Program Status Code:H
+Program Status Code Description:HALF TIME
+Program Status Effective Date:06/20/2023
+Program Status Code:F
+Program Status Code Description:FULL TIME
+Program Status Effective Date:09/29/2021
+Enrolled School Name:University of Washington - Seattle
+Enrolled School OPEID:00379800
+Enrolled Status Code:F
+Enrolled Status Code Description:FULL TIME
+Enrolled Status Date:09/27/2023
