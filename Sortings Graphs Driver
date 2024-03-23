@@ -1,0 +1,237 @@
+import Sortings
+import timeit
+from timeit import default_timer as timer
+from matplotlib import pyplot as plt
+import numpy as np
+import random
+
+class Sorter:
+    # these variables are here so I can access info across the whole class
+    tempList = []
+    order = []
+    partial_ordering = []
+    first_length = 0
+    random_list = []
+    
+    def __init__(self, sortName, length):
+        Sorter.first_length = length
+        tempList = Sorter.ranGenerator(length)
+
+        # Makes all 4 different kinds of cases
+        Sorter.randomList = tempList.copy()
+        Sorter.ordered(tempList, sortName)
+        new_random_list = Sorter.ranGenerator(Sorter.first_length)
+        Sorter.partial_ordering(new_random_list, sortName)
+        
+        #print(tempList)
+
+    @staticmethod
+    def ranGenerator(length):
+        # creates and populates the list
+        return [random.randint(1, length) for _ in range(length)]
+
+    @staticmethod
+    def ordered(random_list, sortName):
+        # ordering the data structure completely
+        input_copy = random_list
+        
+        if sortName == "bubblesort":
+            return_list = Sortings.short_bubble_sort(input_copy)
+        elif sortName == "insertionsort":
+            return_list = Sortings.insertion_sort(input_copy)
+        elif sortName == "mergesort":
+            return_list = Sortings.merge_sort(input_copy)
+        elif sortName == "quicksort":
+            return_list = input_copy[:] = Sortings.quick_sort(input_copy)
+        elif sortName == "shellsort":
+            return_list = Sortings.shell_sort(input_copy)
+        else:
+            print(f"Sort type {sortName} not recognized.")
+            return
+            
+        Sorter.order = input_copy.copy()
+
+
+    @staticmethod
+    def partial_ordering(random_list, sortName):
+        # This makes the partial ordering list
+        first_half = random_list[:(len(random_list)//2)]
+        second_half = random_list[(len(random_list)//2):]
+
+        
+        if sortName == "bubblesort":
+            return_list = Sortings.short_bubble_sort(first_half)
+        elif sortName == "insertionsort":
+            return_list = Sortings.insertion_sort(first_half)
+        elif sortName == "mergesort":
+            return_list = Sortings.merge_sort(first_half)
+        elif sortName == "quicksort":
+            return_list = Sortings.quick_sort(first_half)
+        elif sortName == "shellsort":
+            return_list = Sortings.shell_sort(first_half)
+        else:
+            print(f"Sort type {sortName} not recognized.")
+            return
+        
+        fused_arr = first_half + second_half
+        Sorter.partial_ordered = fused_arr.copy()
+
+    @staticmethod
+    def measure_time(search_function, list_size, numbers, kind):
+        # this method does a lot of heavy lifting for the code and does the measuring
+        target_number = list_size - 1
+        start_time = timeit.default_timer()
+        for _ in range(100):  
+                search_function(numbers)
+
+
+        return timeit.default_timer() - start_time         
+
+    @staticmethod
+    def average(lst):
+        # makes an average list
+        if not lst: 
+            return None  
+        return sum(lst) / len(lst) 
+
+    @staticmethod
+    def create_averages(): 
+        # used for x axis of plotting and for the making of the x axis component
+        size_of_list = [0, 500, 1000, 1500, 2000, 2500, 3000, 3500]
+        list_sizes = [0, 500, 1000, 1500, 2000, 2500, 3000, 3500]
+
+        # utility function
+        def reverse_list(lst):
+              return lst[::-1]
+            
+        def looping_size(indexAt, kind, sortName):
+            sort1 =  Sorter(sortName, size_of_list[indexAt]) 
+            print('Loading your graph is being prepared...')
+
+            # This code is needed to pick the right kind of sorted list
+            if(kind == "order"):
+                order = sort1.order
+            elif(kind == 'random'):
+                order = sort1.randomList
+            elif(kind == 'partial'):
+                order = sort1.partial_ordered
+            elif(kind == 'reverse'):
+                order = reverse_list(sort1.randomList)
+
+            times = [0]
+
+            # runs the code 3 times and than prints it out
+            
+            if sortName == "bubblesort":
+                times.append(sort1.measure_time(Sortings.short_bubble_sort, size_of_list[indexAt], order, "bubblesort"))
+                times.append(sort1.measure_time(Sortings.short_bubble_sort, size_of_list[indexAt] , order, "bubblesort"))
+                times.append(sort1.measure_time(Sortings.short_bubble_sort, size_of_list[indexAt] , order, "bubbesort"))
+            elif sortName == "insertionsort":
+                times.append(sort1.measure_time(Sortings.insertion_sort, size_of_list[indexAt], order, "insertionsort"))
+                times.append(sort1.measure_time(Sortings.insertion_sort, size_of_list[indexAt] , order, "insertionsort"))
+                times.append(sort1.measure_time(Sortings.insertion_sort, size_of_list[indexAt] , order, "insertionsort"))
+            elif sortName == "mergesort":
+                times.append(sort1.measure_time(Sortings.merge_sort, size_of_list[indexAt], order, "mergesort"))
+                times.append(sort1.measure_time(Sortings.merge_sort, size_of_list[indexAt] , order, "mergesort"))
+                times.append(sort1.measure_time(Sortings.merge_sort, size_of_list[indexAt] , order, "mergesort"))
+            elif sortName == "quicksort":
+                times.append(sort1.measure_time(Sortings.quick_sort, size_of_list[indexAt], order, "quicksort"))
+                times.append(sort1.measure_time(Sortings.quick_sort, size_of_list[indexAt] , order, "quicksort"))
+                times.append(sort1.measure_time(Sortings.quick_sort, size_of_list[indexAt] , order, "quicksort"))
+            elif sortName == "shellsort":
+                times.append(sort1.measure_time(Sortings.shell_sort, size_of_list[indexAt], order, "shellsort"))
+                times.append(sort1.measure_time(Sortings.shell_sort, size_of_list[indexAt] , order, "shellsort"))
+                times.append(sort1.measure_time(Sortings.shell_sort, size_of_list[indexAt] , order, "shellsort"))
+            else:
+                print(f"Sort type {sortName} not recognized.")
+                return
+            
+            avg = sort1.average(times)
+            return avg
+
+        # This is me making the Y-axis from scratch with the points of data from the above looping function
+        
+        times = [0, looping_size(1, 'random', 'bubblesort'), looping_size(2, 'random', 'bubblesort'), looping_size(3, 'random', 'bubblesort'), looping_size(4, 'random', 'bubblesort'), looping_size(5, 'random', 'bubblesort'), looping_size(6, 'random', 'bubblesort'), looping_size(7, 'random', 'bubblesort')]
+        times_insert = [0 , looping_size(1, 'random', "insertionsort"), looping_size(2, 'random', "insertionsort"),looping_size(3, 'random', "insertionsort"), looping_size(4, 'random', "insertionsort"), looping_size(5, 'random', "insertionsort"),looping_size(6, 'random', "insertionsort"), looping_size(7, 'random', "insertionsort")]
+        times_merge = [ 0 , looping_size(1, 'random', 'mergesort'), looping_size(2, 'random', 'mergesort'), looping_size(3, 'random', 'mergesort'), looping_size(4, 'random', 'mergesort'), looping_size(5, 'random', 'mergesort'), looping_size(6, 'random', 'mergesort'), looping_size(7, 'random', 'mergesort')]
+        times_quick = [0 , looping_size(1, 'random', 'quicksort'), looping_size(2, 'random', 'quicksort'), looping_size(3, 'random', 'quicksort'), looping_size(4, 'random', 'quicksort'), looping_size(5, 'random', 'quicksort'), looping_size(6, 'random', 'quicksort'), looping_size(7, 'random', 'quicksort')]
+        times_shell = [0 , looping_size(1, 'random', 'shellsort'), looping_size(2, 'random', 'shellsort'), looping_size(3, 'random', 'shellsort'), looping_size(4, 'random', 'shellsort'), looping_size(5, 'random', 'shellsort'), looping_size(6, 'random', 'shellsort'), looping_size(7, 'random', 'shellsort')]
+
+        
+        times_order = [0, looping_size(1, 'order', 'bubblesort'), looping_size(2, 'order', 'bubblesort'), looping_size(3, 'order', 'bubblesort'), looping_size(4, 'order', 'bubblesort'), looping_size(5, 'order', 'bubblesort'), looping_size(6, 'order', 'bubblesort'), looping_size(7, 'order', 'bubblesort')]
+        times_insert_order = [0 , looping_size(1, 'order', "insertionsort"), looping_size(2, 'order', "insertionsort"),looping_size(3, 'order', "insertionsort"), looping_size(4, 'order', "insertionsort"), looping_size(5, 'order', "insertionsort"),looping_size(6, 'order', "insertionsort"), looping_size(7, 'order', "insertionsort")]
+        times_merge_order = [ 0 , looping_size(1, 'order', 'mergesort'), looping_size(2, 'order', 'mergesort'), looping_size(3, 'order', 'mergesort'), looping_size(4, 'order', 'mergesort'), looping_size(5, 'order', 'mergesort'), looping_size(6, 'order', 'mergesort'), looping_size(7, 'order', 'mergesort')]
+        times_quick_order = [0 , looping_size(1, 'order', 'quicksort'), looping_size(2, 'order', 'quicksort'), looping_size(3, 'order', 'quicksort'), looping_size(4, 'order', 'quicksort'), looping_size(5, 'order', 'quicksort'), looping_size(6, 'order', 'quicksort'), looping_size(7, 'order', 'quicksort')]
+        times_shell_order = [0 , looping_size(1, 'order', 'shellsort'), looping_size(2, 'order', 'shellsort'), looping_size(3, 'order', 'shellsort'), looping_size(4, 'order', 'shellsort'), looping_size(5, 'order', 'shellsort'), looping_size(6, 'order', 'shellsort'), looping_size(7, 'order', 'shellsort')]
+
+        times_partial = [0, looping_size(1, 'partial', 'bubblesort'), looping_size(2, 'partial', 'bubblesort'), looping_size(3, 'partial', 'bubblesort'), looping_size(4, 'partial', 'bubblesort'), looping_size(5, 'partial', 'bubblesort'), looping_size(6, 'partial', 'bubblesort'), looping_size(7, 'partial', 'bubblesort')]
+        times_insert_partial = [0 , looping_size(1, 'partial', "insertionsort"), looping_size(2, 'partial', "insertionsort"),looping_size(3, 'partial', "insertionsort"), looping_size(4, 'partial', "insertionsort"), looping_size(5, 'partial', "insertionsort"),looping_size(6, 'partial', "insertionsort"), looping_size(7, 'partial', "insertionsort")]
+        times_merge_partial = [ 0 , looping_size(1, 'partial', 'mergesort'), looping_size(2, 'partial', 'mergesort'), looping_size(3, 'partial', 'mergesort'), looping_size(4, 'partial', 'mergesort'), looping_size(5, 'partial', 'mergesort'), looping_size(6, 'partial', 'mergesort'), looping_size(7, 'partial', 'mergesort')]
+        times_quick_partial = [0 , looping_size(1, 'partial', 'quicksort'), looping_size(2, 'partial', 'quicksort'), looping_size(3, 'partial', 'quicksort'), looping_size(4, 'partial', 'quicksort'), looping_size(5, 'partial', 'quicksort'), looping_size(6, 'partial', 'quicksort'), looping_size(7, 'partial', 'quicksort')]
+        times_shell_partial = [0 , looping_size(1, 'partial', 'shellsort'), looping_size(2, 'partial', 'shellsort'), looping_size(3, 'partial', 'shellsort'), looping_size(4, 'partial', 'shellsort'), looping_size(5, 'partial', 'shellsort'), looping_size(6, 'partial', 'shellsort'), looping_size(7, 'partial', 'shellsort')]
+
+        times_reverse = [0, looping_size(1, 'reverse', 'bubblesort'), looping_size(2, 'reverse', 'bubblesort'), looping_size(3, 'reverse', 'bubblesort'), looping_size(4, 'reverse', 'bubblesort'), looping_size(5, 'reverse', 'bubblesort'), looping_size(6, 'reverse', 'bubblesort'), looping_size(7, 'reverse', 'bubblesort')]
+        times_insert_reverse = [0 , looping_size(1, 'reverse', "insertionsort"), looping_size(2, 'reverse', "insertionsort"),looping_size(3, 'reverse', "insertionsort"), looping_size(4, 'reverse', "insertionsort"), looping_size(5, 'reverse', "insertionsort"),looping_size(6, 'reverse', "insertionsort"), looping_size(7, 'reverse', "insertionsort")]
+        times_merge_reverse = [ 0 , looping_size(1, 'reverse', 'mergesort'), looping_size(2, 'reverse', 'mergesort'), looping_size(3, 'reverse', 'mergesort'), looping_size(4, 'reverse', 'mergesort'), looping_size(5, 'reverse', 'mergesort'), looping_size(6, 'reverse', 'mergesort'), looping_size(7, 'reverse', 'mergesort')]
+        times_quick_reverse = [0 , looping_size(1, 'reverse', 'quicksort'), looping_size(2, 'reverse', 'quicksort'), looping_size(3, 'reverse', 'quicksort'), looping_size(4, 'reverse', 'quicksort'), looping_size(5, 'reverse', 'quicksort'), looping_size(6, 'reverse', 'quicksort'), looping_size(7, 'reverse', 'quicksort')]
+        times_shell_reverse = [0 , looping_size(1, 'reverse', 'shellsort'), looping_size(2, 'reverse', 'shellsort'), looping_size(3, 'reverse', 'shellsort'), looping_size(4, 'reverse', 'shellsort'), looping_size(5, 'reverse', 'shellsort'), looping_size(6, 'reverse', 'shellsort'), looping_size(7, 'reverse', 'shellsort')]
+
+
+        def random_plot():
+            # This is random
+            plt.plot(list_sizes, times, marker='o', label="Bubble Sort Random")
+            plt.plot(list_sizes, times_insert, marker='o', label="Insert Sort Random")
+            plt.plot(list_sizes, times_merge, marker='o', label="Merge Sort Random")
+            plt.plot(list_sizes, times_quick, marker='o', label="Quick Sort Random")
+            plt.plot(list_sizes, times_shell, marker='o', label="Shell Sort Random")
+
+        def order_plot():
+            #This is order
+            plt.plot(list_sizes, times_order, marker='o', label="Bubble Sort order")
+            plt.plot(list_sizes, times_insert_order, marker='o', label="Insert Sort order")
+            plt.plot(list_sizes, times_merge_order, marker='o', label="Merge Sort order")
+            plt.plot(list_sizes, times_quick_order, marker='o', label="Quick Sort order")
+            plt.plot(list_sizes, times_shell_order, marker='o', label="Shell Sort order")
+
+
+        def partial_plot():
+            #This is partial
+            plt.plot(list_sizes, times_partial, marker='o', label="Bubble Sort partial")
+            plt.plot(list_sizes, times_insert_partial, marker='o', label="Insert Sort partial")
+            plt.plot(list_sizes, times_merge_partial, marker='o', label="Merge Sort partial")
+            plt.plot(list_sizes, times_quick_partial, marker='o', label="Quick Sort partial")
+            plt.plot(list_sizes, times_shell_partial, marker='o', label="Shell Sort partial")
+
+        def reverse_plot():
+            #This is reverse
+            plt.plot(list_sizes, times_reverse, marker='o', label="Bubble Sort reverse")
+            plt.plot(list_sizes, times_insert_reverse, marker='o', label="Insert Sort reverse")
+            plt.plot(list_sizes, times_merge_reverse, marker='o', label="Merge Sort reverse")
+            plt.plot(list_sizes, times_quick_reverse, marker='o', label="Quick Sort reverse")
+            plt.plot(list_sizes, times_shell_reverse, marker='o', label="Shell Sort reverse")
+
+        #run one of the above function with name plot.
+
+        random_plot()
+        order_plot()
+        partial_plot()
+        reverse_plot()
+        
+        # Set the x-axis to scientific notation
+        plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+
+        # Add labels and title
+        plt.xlabel('Size of List')
+        plt.ylabel('Average Time (seconds)')
+        plt.title('Average Time vs Size of List for Sorting Algorithms')
+        plt.legend()
+
+        
+        # Show plot
+        plt.show()
+
+
+
+
+if __name__ == "__main__":
+    Sorter.create_averages()
